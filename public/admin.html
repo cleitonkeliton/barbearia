@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Administração | Royal Barber</title>
+    <link rel="icon" href="/brand.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/admin.js" defer></script>
+  </head>
+  <body class="admin-body">
+    <header class="header">
+      <a class="wordmark" href="/"
+        ><img src="/brand.svg" alt="" /><span
+          >ROYAL BARBER<small>ADMINISTRAÇÃO</small></span
+        ></a
+      ><a class="text-link" href="/">Voltar ao site ↗</a>
+    </header>
+    <main class="admin-main">
+      <div id="notice" role="status" aria-live="polite"></div>
+      <section id="login">
+        <p class="eyebrow">ACESSO RESTRITO</p>
+        <h1>Seu painel <em>Royal.</em></h1>
+        <p class="muted">
+          Gerencie os serviços e os planos publicados no site.
+        </p>
+        <form id="login-form">
+          <label for="password">Senha administrativa</label
+          ><input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            maxlength="1024"
+          /><button class="button">Entrar no painel ↗</button>
+        </form>
+      </section>
+      <section id="dashboard" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CATÁLOGO ROYAL</p>
+            <h1>Serviços & <em>planos.</em></h1>
+          </div>
+          <button id="logout" class="button outline">Sair</button>
+        </div>
+        <div class="admin-layout">
+          <form id="service-form">
+            <h2 id="form-title">Novo item</h2>
+            <input id="item-id" type="hidden" /><label for="name">Nome</label
+            ><input id="name" required maxlength="100" /><label for="category"
+              >Categoria</label
+            ><select id="category">
+              <option value="servico">Serviço avulso</option>
+              <option value="plano">Plano mensal</option></select
+            ><label for="description">Descrição / benefícios</label
+            ><textarea
+              id="description"
+              rows="4"
+              maxlength="1000"
+              required
+            ></textarea
+            ><label for="price">Preço em R$ (vazio = sob consulta)</label
+            ><input
+              id="price"
+              type="number"
+              min="0"
+              max="100000"
+              step="0.01"
+            /><label class="checkbox"
+              ><input id="active" type="checkbox" checked /> Publicar no
+              site</label
+            >
+            <div class="actions">
+              <button class="button">Salvar item</button
+              ><button type="button" id="cancel" class="button outline">
+                Limpar
+              </button>
+            </div>
+          </form>
+          <div>
+            <p class="muted">
+              Alterações são publicadas imediatamente. Desative um item para
+              ocultá-lo sem excluir.
+            </p>
+            <div id="items"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

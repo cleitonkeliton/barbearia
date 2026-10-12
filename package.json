@@ -1,0 +1,16 @@
+{
+  "name": "royal-barber",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "admin:setup": "node --env-file-if-exists=.env scripts/admin.js",
+    "test": "node --test",
+    "check": "node --check server.js && node --check public/app.js && node --check public/admin.js && node --check scripts/admin.js"
+  }
+}

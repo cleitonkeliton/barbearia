@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#080e17" />
+    <meta
+      name="description"
+      content="Royal Barber em Cajueiro Seco, Jaboatão dos Guararapes. Cortes, barba, assinaturas a partir de R$ 99,90 e cursos de barbeiro."
+    />
+    <title>Royal Barber | Mais que um corte, uma experiência</title>
+    <link rel="icon" href="/brand.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <a class="wordmark" href="#inicio"
+        ><img src="/brand.svg" alt="Royal Barber" /><span
+          >ROYAL BARBER<small>ESTILO É ATITUDE</small></span
+        ></a
+      ><button
+        class="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+      <nav aria-label="Principal">
+        <a href="#sobre">A barbearia</a><a href="#servicos">Serviços</a
+        ><a href="#planos">Assinaturas</a><a href="#cursos">Cursos</a
+        ><a href="#contato">Contato</a>
+      </nav>
+      <a
+        class="button small header-cta"
+        data-wa="Quero agendar um horário na Royal Barber."
+        >Agendar horário ↗</a
+      >
+    </header>
+    <main>
+      <section class="hero" id="inicio">
+        <div
+          class="hero-photo"
+          role="img"
+          aria-label="Imagem ilustrativa de um ambiente de barbearia com cadeira de atendimento"
+        ></div>
+        <div class="hero-content">
+          <p class="eyebrow"><span></span> SEU ESTILO. SEU REINADO.</p>
+          <h1>Mais que um corte.<br />Uma experiência<br /><em>Royal.</em></h1>
+          <p class="hero-description">
+            Precisão nos detalhes. Personalidade em cada corte.<br />Seu próximo
+            nível de estilo começa aqui.
+          </p>
+          <div class="actions">
+            <a
+              class="button"
+              data-wa="Quero agendar um horário na Royal Barber."
+              >Agende sua experiência <span>↗</span></a
+            ><a class="text-link" href="#planos"
+              >Conheça os planos <span>↓</span></a
+            >
+          </div>
+          <div class="hero-location">
+            <span class="location-icon">⌖</span
+            ><span
+              >CAJUEIRO SECO · JABOATÃO DOS GUARARAPES<small
+                >Rua Santo Elias, 344</small
+              ></span
+            >
+          </div>
+        </div>
+        <div class="hero-seal">
+          ♛<span>CONFIANÇA<br />É PADRÃO.</span>
+        </div>
+        <div class="hero-bottom">
+          <span>01 / A EXPERIÊNCIA ROYAL</span
+          ><a href="#sobre">EXPLORE <span>↓</span></a>
+        </div>
+      </section>
+      <div class="ribbon">
+        <span>✦ CORTE & BARBA</span><span>✦ CLUBE DE ASSINATURA</span
+        ><span>✦ FORMAÇÃO PROFISSIONAL</span
+        ><span>✦ MAIS ESTILO. SEMPRE ROYAL.</span>
+      </div>
+      <section class="section about" id="sobre">
+        <div class="about-art">
+          <img src="/brand.svg" alt="Emblema Royal Barber" />
+          <p>MAIS QUE UM CORTE,<br /><strong>UMA EXPERIÊNCIA.</strong></p>
+          <span class="art-corner">ROYAL / CAJUEIRO SECO</span>
+        </div>
+        <div>
+          <p class="eyebrow">01 — A BARBEARIA</p>
+          <h2>O cuidado que você merece.<br /><em>O estilo que é seu.</em></h2>
+          <p class="muted">
+            Na Royal Barber, cada detalhe importa. Do corte ao acabamento da
+            barba, nosso compromisso é valorizar a sua identidade com técnica,
+            cuidado e uma experiência de verdade.
+          </p>
+          <div class="features">
+            <div>
+              <span>✂</span>
+              <h3>Precisão & estilo</h3>
+              <p>Cortes e acabamentos pensados para você.</p>
+            </div>
+            <div>
+              <span>♛</span>
+              <h3>Experiência Royal</h3>
+              <p>Atendimento com atenção a cada detalhe.</p>
+            </div>
+          </div>
+          <a
+            class="text-link gold"
+            data-wa="Gostaria de conhecer a Royal Barber."
+            >Venha conhecer a Royal ↗</a
+          >
+        </div>
+      </section>
+      <section class="section services" id="servicos">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 — SERVIÇOS</p>
+            <h2>Seu visual, <em>bem cuidado.</em></h2>
+          </div>
+          <p class="muted">Escolha seu cuidado.<br />A gente cuida do resto.</p>
+        </div>
+        <div id="service-list" class="service-grid" aria-live="polite">
+          <p>Carregando serviços…</p>
+        </div>
+      </section>
+      <section class="section plans" id="planos">
+        <div class="center">
+          <p class="eyebrow">03 — CLUBE ROYAL</p>
+          <h2>Seu estilo em dia.<br /><em>Todo mês.</em></h2>
+          <p class="muted">
+            Pare de pagar por corte toda semana. Assine e aproveite.<br />Mais
+            praticidade. Mais estilo. Sempre Royal.
+          </p>
+        </div>
+        <div id="plan-list" class="plan-grid" aria-live="polite"></div>
+        <div class="plan-notes">
+          <span>✓ Planos mensais</span><span>✓ Cancele quando quiser</span
+          ><span>✓ Atendimento prioritário</span>
+        </div>
+        <p class="fine-print">
+          Vagas limitadas. Confirme disponibilidade, regras de uso e condições
+          de cada plano pelo WhatsApp.
+        </p>
+      </section>
+      <section class="section course" id="cursos">
+        <div>
+          <p class="eyebrow">04 — ACADEMIA ROYAL</p>
+          <h2>Transforme sua paixão<br /><em>em profissão.</em></h2>
+          <p class="muted">
+            Aprenda com quem vive o mercado todos os dias. Formação prática,
+            estrutura profissional e certificado de conclusão.
+          </p>
+          <div class="course-tabs">
+            <article>
+              <h3>Do zero ao profissional</h3>
+              <p>
+                Degradê 3 tons · Cortes masculinos · Cortes na tesoura · Design
+                de barba · Atendimento e vendas
+              </p>
+            </article>
+            <article>
+              <h3>Aperfeiçoamento</h3>
+              <p>
+                Desenho · Nevou sem ardência · Pigmentação · Degradê 3 tons ·
+                Reflexo alinhado
+              </p>
+            </article>
+          </div>
+          <a
+            class="button"
+            data-wa="Tenho interesse nos cursos de barbeiro. Quais são as turmas, valores e horários disponíveis?"
+            >Quero ser barbeiro <span>↗</span></a
+          >
+          <p class="fine-print left">
+            Consulte turmas, carga horária e valores. Vagas limitadas.
+          </p>
+        </div>
+        <div class="course-visual">
+          <span class="course-number">RB</span
+          ><span class="eyebrow">TÉCNICA · PRÁTICA · FUTURO</span>
+          <h3>O seu futuro<br />começa <em>aqui.</em></h3>
+          <div class="certificate">
+            ✧<span
+              >FORMAÇÃO PROFISSIONAL<br /><strong
+                >Certificado de conclusão</strong
+              ></span
+            >
+          </div>
+        </div>
+      </section>
+      <section class="section faq">
+        <div>
+          <p class="eyebrow">05 — DÚVIDAS FREQUENTES</p>
+          <h2>Antes de chegar,<br /><em>saiba mais.</em></h2>
+        </div>
+        <div>
+          <details>
+            <summary>Como faço para agendar?</summary>
+            <p>
+              Clique em “Agendar horário” e fale diretamente com a equipe no
+              WhatsApp para confirmar o serviço e um horário disponível.
+            </p>
+          </details>
+          <details>
+            <summary>Como funciona a assinatura?</summary>
+            <p>
+              Escolha um plano mensal e consulte a equipe pelo WhatsApp para
+              adesão e condições. Os benefícios de cada plano estão descritos
+              acima. Você pode cancelar quando quiser.
+            </p>
+          </details>
+          <details>
+            <summary>Preciso ter experiência para fazer o curso?</summary>
+            <p>
+              A modalidade “Do zero ao profissional” é voltada a iniciantes.
+              Para quem já atua, temos aperfeiçoamento. Consulte pré-requisitos
+              e próximas turmas com a equipe.
+            </p>
+          </details>
+          <details>
+            <summary>Qual é o horário de funcionamento?</summary>
+            <p>
+              Confirme os horários de atendimento e a disponibilidade
+              diretamente pelo WhatsApp antes da visita.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="section contact" id="contato">
+        <div>
+          <p class="eyebrow">06 — ENCONTRE A ROYAL</p>
+          <h2>Seu próximo corte<br /><em>tem endereço.</em></h2>
+          <p>
+            Rua Santo Elias, 344 — Cajueiro Seco<br />Jaboatão dos Guararapes —
+            PE<br />CEP 54330-230
+          </p>
+          <a
+            class="text-link gold"
+            href="https://www.google.com/maps/search/?api=1&query=Rua%20Santo%20Elias%20344%20Cajueiro%20Seco%20Jaboat%C3%A3o%20dos%20Guararapes"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Traçar rota no Google Maps ↗</a
+          >
+        </div>
+        <div class="contact-card">
+          <span class="eyebrow">VAMOS CONVERSAR</span
+          ><a
+            class="phone"
+            data-wa="Olá! Gostaria de informações sobre a Royal Barber."
+            >(81) 98103-8416 ↗</a
+          >
+          <p class="muted">
+            Agendamentos, assinaturas e cursos.<br />Estamos a uma mensagem de
+            distância.
+          </p>
+          <a
+            class="button"
+            data-wa="Olá! Gostaria de informações sobre a Royal Barber."
+            >Chamar no WhatsApp ↗</a
+          ><a
+            class="instagram"
+            href="https://www.instagram.com/royalbarber_rec/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram · @royalbarber_rec ↗</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a class="wordmark" href="#inicio"
+        ><img src="/brand.svg" alt="" /><span
+          >ROYAL BARBER<small>MAIS QUE UM CORTE, UMA EXPERIÊNCIA.</small></span
+        ></a
+      >
+      <p>
+        © <span id="year"></span> Royal Barber. Todos os direitos reservados.
+      </p>
+      <a href="/admin">Área administrativa ↗</a>
+    </footer>
+    <a
+      class="floating-wa"
+      data-wa="Quero agendar um horário na Royal Barber."
+      aria-label="Agendar pelo WhatsApp"
+      >WhatsApp ↗</a
+    >
+  </body>
+</html>
