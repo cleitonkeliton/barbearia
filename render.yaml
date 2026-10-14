@@ -1,0 +1,26 @@
+# Blueprint do Render: um Web Service com disco persistente para o SQLite.
+# No painel do Render: New > Blueprint > selecione este repositório.
+services:
+  - type: web
+    name: royal-barber
+    runtime: node
+    plan: starter
+    region: virginia
+    numInstances: 1
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+      - key: TRUST_PROXY
+        value: "1"
+    disk:
+      name: royal-data
+      mountPath: /var/data
+      sizeGB: 1

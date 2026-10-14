@@ -16,6 +16,7 @@ async function start() {
       HOST: "127.0.0.1",
       DATA_DIR: dir,
       NODE_ENV: "test",
+      TRUST_PROXY: "1",
     },
     stdio: ["ignore", "pipe", "pipe"],
   });
@@ -246,6 +247,17 @@ test("site, catálogo e controles administrativos", async (t) => {
     assert.equal(
       (await request("/api/login", "POST", { password: "invalid" })).status,
       429,
+    );
+    assert.equal(
+      (
+        await request(
+          "/api/login",
+          "POST",
+          { password: "invalid" },
+          { "X-Forwarded-For": "203.0.113.5, 10.0.0.1" },
+        )
+      ).status,
+      401,
     );
   });
 });

@@ -65,6 +65,12 @@ const cleanup = setInterval(() => {
     if (value.until <= now) attempts.delete(key);
 }, 60000);
 cleanup.unref();
+// Atrás de um proxy (ex.: Render), o IP da conexão é o do proxy; o IP real do
+// visitante vem no primeiro item de X-Forwarded-For.
+const clientIp = (req) =>
+  (process.env.TRUST_PROXY === "1" &&
+    req.headers["x-forwarded-for"]?.split(",")[0].trim()) ||
+  req.socket.remoteAddress;
 const json = (res, status, data) => {
   res.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8",
@@ -136,7 +142,7 @@ const server = http.createServer(async (req, res) => {
           db.prepare("SELECT * FROM services WHERE active=1 ORDER BY id").all(),
         );
       if (path === "/api/login" && req.method === "POST") {
-        const key = req.socket.remoteAddress;
+        const key = clientIp(req);
         let a = attempts.get(key);
         if (!a || a.until < Date.now()) {
           a = { count: 0, until: Date.now() + 900000 };
