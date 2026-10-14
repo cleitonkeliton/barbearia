@@ -39,6 +39,7 @@ Opcionalmente, copie `.env.example` para `.env` e personalize a configuração. 
 | `HOST`     | `0.0.0.0`       | Interface de escuta                                                                |
 | `DATA_DIR` | `./data`        | Diretório persistente para banco e hash da senha; use caminho absoluto em produção |
 | `NODE_ENV` | desenvolvimento | Use `production` quando servido por HTTPS para ativar cookie Secure                |
+| `TRUST_PROXY` | desligado    | Use `1` atrás de um proxy (como o Render) para limitar o login pelo IP real do visitante |
 
 ## 2. Configurar a administração
 
@@ -69,21 +70,27 @@ npm test
 
 Os testes iniciam um servidor real em porta aleatória e usam banco temporário. Verificam catálogo e preços iniciais, autenticação, cookies, CSRF, bloqueio de origem externa, validação, criação/edição/exclusão, ocultação, persistência após reinício, logout e bloqueio por excesso de tentativas. Não modificam o banco usado pelo site.
 
-## 4. Publicar na internet
+## 4. Publicar na internet (Render)
 
-O envio ao GitHub publica o **código**. Para colocar o site no ar, use hospedagem com **Node 24+, processo HTTP e disco persistente** (por exemplo, um servidor ou plano de hospedagem que suporte volumes).
+O repositório já tem um `render.yaml` com toda a configuração: Web Service no plano **Starter**, região Virgínia (EUA, a mais próxima do Brasil), Node 24, disco persistente de 1 GB em `/var/data` e as variáveis `NODE_ENV=production`, `DATA_DIR=/var/data` e `TRUST_PROXY=1`.
 
-1. Conecte este repositório à hospedagem.
-2. Configure instalação `npm ci` e inicialização `npm start`.
-3. Monte um disco persistente e defina `DATA_DIR` com seu caminho absoluto. Banco e senha precisam permanecer no mesmo volume entre reinícios e novas versões.
-4. Configure `NODE_ENV=production`. Use HTTPS no domínio público e um proxy reverso que preserve o cabeçalho `Host` do domínio.
-5. Execute `npm run admin:setup` no ambiente de produção, com o mesmo `DATA_DIR` e uma senha nova. Não há credencial de demonstração publicada.
-6. Confirme a página inicial, o acesso a `/admin` e a edição de um item. Reinicie e confira a persistência.
-7. Configure backups do diretório de dados. Pare o processo antes de copiar todo o diretório ou use uma ferramenta de backup do SQLite compatível com WAL. Proteja o backup, pois ele contém o hash da senha.
+1. Crie uma conta em [render.com](https://render.com) e conecte sua conta do GitHub.
+2. No painel, clique em **New > Blueprint** e escolha o repositório `barbearia`. O Render lê o `render.yaml` e mostra o serviço `royal-barber` com o disco `royal-data`.
+3. Confirme em **Apply** e cadastre um cartão quando for solicitado (plano Starter + disco são pagos).
+4. Aguarde o primeiro deploy terminar (status **Live**). O site fica em `https://royal-barber.onrender.com` ou um endereço parecido, mostrado no topo da página do serviço.
+5. Crie a senha do painel: na página do serviço, abra a aba **Shell** e execute `npm run admin:setup`. Digite uma senha nova, de pelo menos 12 caracteres. Ela fica salva no disco persistente e vale para os próximos deploys.
+6. Acesse `/admin`, entre com a senha e edite um item. Depois clique em **Manual Deploy > Restart service** e confira se a alteração continua lá.
+7. (Opcional) Domínio próprio: em **Settings > Custom Domains**, adicione o domínio e crie no seu provedor de DNS o registro indicado pelo Render. O certificado HTTPS é emitido automaticamente.
 
-**GitHub Pages não executa este backend**. Hospedagem somente estática, armazenamento efêmero ou múltiplas réplicas com bancos separados não suportam a administração persistente desta versão. Execute uma única instância; as sessões ficam na memória e exigem novo login após reinício. O limite de login é por IP da conexão; atrás de um proxy compartilhado, complemente com limitação no proxy.
+Cada `git push` na branch principal publica uma nova versão automaticamente. Com disco persistente, o site fica fora do ar por alguns segundos durante cada deploy e o administrador precisa entrar de novo. O Render guarda snapshots diários do disco; para uma cópia extra, baixe o diretório `/var/data` periodicamente pelo Shell ou por SSH.
 
-Não foi contratado domínio nem publicado um serviço de hospedagem automaticamente. Esses passos dependem do provedor escolhido.
+Para trocar a senha, rode `npm run admin:setup` novamente no Shell e reinicie o serviço.
+
+### Outras hospedagens
+
+Use hospedagem com **Node 24+, processo HTTP e disco persistente**: instalação `npm ci`, inicialização `npm start`, `DATA_DIR` apontando para o disco, `NODE_ENV=production` com HTTPS e um proxy reverso que preserve o cabeçalho `Host`. Defina `TRUST_PROXY=1` somente se o proxy enviar `X-Forwarded-For` com o IP do visitante.
+
+**GitHub Pages não executa este backend**. Hospedagem somente estática, armazenamento efêmero (como o plano gratuito do Render) ou múltiplas réplicas com bancos separados não suportam a administração persistente desta versão. Execute uma única instância; as sessões ficam na memória e exigem novo login após reinício.
 
 ## Organização e personalização
 
